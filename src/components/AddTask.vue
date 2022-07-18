@@ -1,15 +1,15 @@
 <template>
     <form @submit="onSubmit" class="add-task">
         <div class="form-control">
-            <label>Task name : </label>
+            <label>Name : </label>
             <input type="text" name="name" v-model="name" placeholder="Name of the task">
         </div>
         <div class="form-control">
-            <label>Task supervisor : </label>
+            <label>Supervisor : </label>
             <input type="text" name="supervisor" v-model="supervisor" placeholder="Supervisor of the task">
         </div>
         <div class="form-control">
-            <label>Task priority : </label>
+            <label>Priority : </label>
             <input type="number" name="priority" v-model="priority" placeholder="Task priority">
         </div>
         <div class="form-control">
@@ -79,18 +79,7 @@
 </script>
 
 <style scoped>
-    form{
-        font-size: 28px;
-        border: 5px solid #041647;
-        padding: 20px;
-        margin: 10px;
-        width:40%;
-        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.7);
-    }
-
-    div{
-        margin: 10px 5px;
-    }
+    
 
     input[type=text],input[type=mail],input[type=number]{
         background-color: white;

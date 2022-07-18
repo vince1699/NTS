@@ -2,14 +2,22 @@
   <section >
         <h1>Les Arrivants du moment </h1>
         <Button @btn-click="showAdd" :showAddNewcomer="showAddNewcomer" :text="showAddNewcomer ? 'Close' : 'Add Newcomer'"  :color="showAddNewcomer ? '#9a0000' : '#008c64'"/>
-        <Button @btn-click="showUpdate" :showUpdateNewcomer="showUpdateNewcomer" :text="showUpdateNewcomer ? 'Close' : 'Update Newcomer'"  :color="showUpdateNewcomer ? '#9a0000' : '#df6800'"/>
         <div v-show="showAddNewcomer">        
             <AddNewcomer @add-newcomer="addNewcomer"/>
         </div>
-        <div v-show="showUpdateNewcomer">        
-            <UpdateNewcomer @update-newcomer="updateNewcomer"  :newcomers="newcomers" />
+        <div v-if="showAddNewcomer==false" class="header">
+            <i class="firstN">
+                Firstname
+            </i>
+            <i class="secondN">
+                Surname
+            </i>
+            <i class="thirdN">
+                Mail
+            </i>
         </div>
-        <Newcomers v-if="showAddNewcomer==false && showUpdateNewcomer==false" @delete-newcomer="deleteNewcomer" @toggle-intern="toggleIntern" :newcomers="newcomers"/>
+
+        <Newcomers v-if="showAddNewcomer==false" @delete-newcomer="deleteNewcomer" @toggle-intern="toggleIntern" :newcomers="newcomers"/>
         <Newcom ref='componentN' v-show="false"/>
   </section>
 </template>
@@ -73,6 +81,7 @@
                 })
                 const data = await res.json()
                 this.newcomers = [...this.newcomers,data]
+                this.showAddNewcomer =!this.showAddNewcomer
                 const t=this.tasks
                 for (const i in t){
                     if(newcomer.intern==true){
@@ -86,19 +95,12 @@
                     }
                 }
             },
-            updateNewcomer(data) {
-                if(confirm('Are you sure?')){
-                    
-                    return (axios.put(`http://localhost:3000/newcomers/${data.id}`, data))
-                }
-            },
+            
 
             showAdd(){
                 this.showAddNewcomer =!this.showAddNewcomer
             },
-            showUpdate(){
-                this.showUpdateNewcomer =!this.showUpdateNewcomer
-            },
+            
             async fetchNewcomers(){
                 const res = await fetch('http://localhost:3000/newcomers')
                 const data = await res.json()

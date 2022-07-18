@@ -1,35 +1,32 @@
 <template>
     <form @submit="onSubmit" class="update-newcomer">
         <div class="form-control">
-        <label for="new-select">List of newcomers : </label>
-            <select v-model="choice" name="newcomerList" id="new-select" >
-                <option value=""> -- Choose a newcomer --</option>
-                <option v-bind:value="{id:newcomer.id,firstname:newcomer.firstname,surname:newcomer.surname,mail:newcomer.email,intern:newcomer.intern,external:newcomer.external}" :key="newcomer.id" v-for="newcomer in newcomers"  >{{newcomer.firstname}} - {{newcomer.surname}}</option>
-            </select>
-        </div>
-        <div class="form-control">
             <label>Firstname : </label>
-            <input type="text" name="firstname" v-model="this.choice.firstname"> 
+            <input type="text" name="firstname" v-model="this.newcomer.firstname"> 
         </div>
         <div class="form-control">
             <label>Surname : </label>
-            <input type="text" name="surname" v-model="this.choice.surname"> 
+            <input type="text" name="surname" v-model="this.newcomer.surname"> 
         </div>
         <div class="form-control">
             <label>Mail : </label>
-            <input type="mail" name="mail" v-model="this.choice.mail">
-        </div>               
-        <input type="submit" value="Update Newcomer" class="btn">
+            <input type="mail" name="mail" v-model="this.newcomer.email">
+        </div>         
+        <input type="submit" value="Update Newcomer" class="btn">        
+        <Button type="button" @click="$emit('show-update')" :text="'Close'"  :color="'#9a0000'"/>
     </form>
 </template>
 
 <script>
+    import Button from '../components/Button.vue';
 
     export default{
         name: 'UpdateNewcomer',
         props:{
-            tasks:Array,
-            newcomers:Array,
+            newcomer:Object,
+        },
+        components : {
+            Button,
         },
         data(){
             return{
@@ -47,18 +44,18 @@
             
             onSubmit(e){
                 e.preventDefault()
-                if(!this.choice){
+                if(!this.newcomer.firstname){
                     alert('Select a newcomer')
                     return
                 }
 
                 const Newcomer = {
-                    id:this.choice.id,
-                    firstname: this.choice.firstname,
-                    surname: this.choice.surname,
-                    email: this.choice.mail,
-                    intern: this.choice.intern,
-                    external: this.choice.external,
+                    id:this.newcomer.id,
+                    firstname: this.newcomer.firstname,
+                    surname: this.newcomer.surname,
+                    email: this.newcomer.email,
+                    intern: this.newcomer.intern,
+                    external: this.newcomer.external,
                 }
 
                 this.$emit('update-newcomer',Newcomer)
@@ -71,22 +68,11 @@
 
             }
         },
+        emits:['show-update']
     }
 </script>
 
 <style scoped>
-    form{
-        font-size: 28px;
-        border: 5px solid #041647;
-        padding: 20px;
-        margin: 10px;
-        width:40%;
-        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.7);
-    }
-
-    div{
-        margin: 10px 5px;
-    }
 
     input:not([type="radio"]),select,textarea{
         background-color: white;

@@ -104,18 +104,6 @@
 </script>
 
 <style scoped>
-    form{
-        font-size: 28px;
-        border: 5px solid #041647;
-        padding: 20px;
-        margin: 10px;
-        width:40%;
-        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.7);
-    }
-
-    div{
-        margin: 10px 5px;
-    }
 
     input:not([type="radio"]),select,textarea{
         background-color: white;

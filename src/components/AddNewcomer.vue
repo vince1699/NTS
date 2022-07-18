@@ -1,15 +1,15 @@
 <template>
     <form @submit="onSubmit" class="add-newcomer">
         <div class="form-control">
-            <label>Newcomer firstname : </label>
+            <label>Firstname : </label>
             <input type="text" name="firstname" v-model="firstname" placeholder="Firstname of the newcomer">
         </div>
         <div class="form-control">
-            <label>Newcomer surname : </label>
+            <label>Surname : </label>
             <input type="text" name="surname" v-model="surname" placeholder="Surname of the newcomer">
         </div>
         <div class="form-control">
-            <label>Newcomer mail : </label>
+            <label>Mail : </label>
             <input type="mail" name="email" v-model="email" placeholder="aafee@somfy.com">
         </div>
         <div class="form-control">

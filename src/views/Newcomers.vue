@@ -2,31 +2,50 @@
   <section>
     <br>
     <Button @btn-click="showAdd" :showAddTask="showAddTask" :text="showAddTask ? 'Close' : 'Add Task To Newcomer'"  :color="showAddTask ? '#9a0000' : '#008c64'"/>
-    <Button @btn-click="showUpdate" :showUpdateTask="showUpdateTask" :text="showUpdateTask ? 'Close' : 'Update Task'"  :color="showUpdateTask ? '#9a0000' : '#df6800'"/>
     <div v-show="showAddTask">        
         <AddTaskToNew @add-task-to-new="addTaskToNew" :tasks="tasks" :newcomers="newcomers" />
     </div>
-    <div v-show="showUpdateTask">        
-        <UpdateTaskToNew @update-task="updateTaskToNew"  :tasksNew="tasksNew" />
-    </div>
-    <div v-if="showAddTask==false && showUpdateTask==false">
+    
+    <div v-if="showAddTask==false">
         <label for="new-select">List of newcomers : </label>
             <select v-model="choice" name="newcomerList" id="new-select" >
                 <option value=""> -- Choose a newcomer --</option>
                 <option v-bind:value="{id:newcomer.id}" :key="newcomer.id" v-for="newcomer in newcomers" >{{newcomer.firstname}} - {{newcomer.surname}}</option>
             </select>
-    </div>
-
-    <h1 style="color:black"> Administrative </h1>
-    <div :key="taskNew.id" v-for="taskNew in tasksNew">
-        <div v-if="taskNew.category=='administrative' && this.choice.id==taskNew.idNewcomer">
-            <TaskToNew @delete-task="deleteTask" :taskNew="taskNew"/>
+        <div class="header">
+            <i class="TN">
+                Name
+            </i>
+            <i class="secondTN">
+                Supervisor
+            </i>
+            <i class="short">
+                Priority
+            </i>
+            <i class="secondTN">
+                Type
+            </i>
+            <i class="secondTN">
+                Comment
+            </i>
+            <i class="secondTN">
+                Date planned
+            </i>
+            <i class="secondTN">
+                Status
+            </i>
         </div>
-    </div>
-    <h1 style="color:black"> Discovery </h1>
-    <div :key="taskNew.id" v-for="taskNew in tasksNew">
-        <div v-if="taskNew.category=='discovery' && this.choice.id==taskNew.idNewcomer">
-            <TaskToNew @delete-task="deleteTask" :taskNew="taskNew"/>
+        <h1 style="color:black"> Administrative </h1>
+        <div :key="taskNew.id" v-for="taskNew in tasksNew">
+            <div v-if="taskNew.category=='administrative' && this.choice.id==taskNew.idNewcomer">
+                <TaskToNew @delete-task="deleteTask" :taskNew="taskNew"/>
+            </div>
+        </div>
+        <h1 style="color:black"> Discovery </h1>
+        <div :key="taskNew.id" v-for="taskNew in tasksNew">
+            <div v-if="taskNew.category=='discovery' && this.choice.id==taskNew.idNewcomer">
+                <TaskToNew @delete-task="deleteTask" :taskNew="taskNew"/>
+            </div>
         </div>
     </div>
     <br>
@@ -34,19 +53,13 @@
 </template>
 
 <style scoped>
-    .first{
-        width: 30%;
+    .TN{
+        width: 27%;
         min-width: 250px;
     }
-
-    .second{
-        width: 8%;
-        min-width: 125px;
-    }
-
-    .third{
-        width: 2%;
-        min-width: 20px;
+    .short{
+        width: 4%;
+        min-width: 50px;
     }
 
     section{
@@ -110,6 +123,7 @@
             async fetchTasksNew(){
                 const res3 = await fetch('http://localhost:3000/tasksNew')
                 const data3 = await res3.json()
+                console.log(data3)
                 return(data3)
             },
             async addTaskToNew(tasksNew){
@@ -134,11 +148,7 @@
                 })
                 const data = await res.json()
                 this.tasksNew = [...this.tasksNew,data]
-            },
-            updateTaskToNew(data) {
-                if(confirm('Are you sure?')){
-                    return (axios.put(`http://localhost:3000/tasksNew/${data.id}`, data))
-                }
+                this.showAddTask =!this.showAddTask
             },
             deleteTask(id){
                 if(confirm('Are you sure?')){
@@ -148,9 +158,6 @@
             },
             showAdd(){
                 this.showAddTask =!this.showAddTask
-            },
-            showUpdate(){
-                this.showUpdateTask =!this.showUpdateTask
             },
         },
         async created(){

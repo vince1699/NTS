@@ -4,7 +4,7 @@
       "id": "1",
       "firstname": "Vincent",
       "surname": "URRUTY",
-      "email": "vincent.urruty@somfy.com",
+      "email": "vincent.urruty@sfy.com",
       "intern": true,
       "external": false
     },
@@ -39,6 +39,22 @@
       "intern": true,
       "external": false,
       "id": "Bq8e5Fw"
+    },
+    {
+      "firstname": "Vincent",
+      "surname": "URR",
+      "email": "vincuty16@gmail.com",
+      "intern": true,
+      "external": false,
+      "id": "usQfCyS"
+    },
+    {
+      "id": "JBFANFQ",
+      "firstname": "Benoit",
+      "surname": "JOSEPH",
+      "email": "toto2@somfy.com",
+      "intern": true,
+      "external": false
     }
   ],
   "tasks": [
@@ -48,15 +64,15 @@
       "supervisor": "RH",
       "category": "administrative",
       "priority": 1,
-      "auto1": false,
-      "auto2": true
+      "auto1": true,
+      "auto2": false
     },
     {
       "id": "2",
       "name": "Ajouter nouvel arrivant à Teams",
       "supervisor": "Manager",
-      "category": "discovery",
-      "priority": 1,
+      "category": "administrative",
+      "priority": "2",
       "auto1": true,
       "auto2": true
     },
@@ -64,8 +80,8 @@
       "id": "3",
       "name": "Renseigner compte IAM",
       "supervisor": "Salarié",
-      "priority": 3,
       "category": "administrative",
+      "priority": 3,
       "auto1": true,
       "auto2": true
     },
@@ -156,12 +172,12 @@
       "id": "BoqS0wX",
       "idTask": "3",
       "idNewcomer": "2",
+      "category": "administrative",
       "name": "Renseigner compte IAM",
       "supervisor": "Salarié",
       "priority": "2",
       "type": "optional",
-      "comment": "ibi",
-      "category": "administrative",
+      "comment": "ibigreg",
       "datePlan": "2022-07-08",
       "status": "program"
     },
@@ -244,6 +260,90 @@
       "priority": 1,
       "category": "discovery",
       "id": "xo_NukZ"
+    },
+    {
+      "id": "-1XHKT5",
+      "idTask": "2",
+      "idNewcomer": "usQfCyS",
+      "category": "discovery",
+      "name": "Ajouter nouvel arrivant à Teams",
+      "supervisor": "Manager",
+      "priority": 1,
+      "type": "optional",
+      "datePlan": "2022-07-21",
+      "status": "planned"
+    },
+    {
+      "idTask": "3",
+      "idNewcomer": "usQfCyS",
+      "name": "Renseigner compte IAM",
+      "supervisor": "Salarié",
+      "priority": 3,
+      "category": "administrative",
+      "id": "UeD4w8Y"
+    },
+    {
+      "idTask": "4TMpKDS",
+      "idNewcomer": "usQfCyS",
+      "name": "jjghjjg",
+      "supervisor": "lmml,n",
+      "priority": 1,
+      "category": "discovery",
+      "id": "7A-j1VT"
+    },
+    {
+      "idTask": "2",
+      "idNewcomer": "JBFANFQ",
+      "name": "Ajouter nouvel arrivant à Teams",
+      "supervisor": "Manager",
+      "category": "discovery",
+      "priority": 1,
+      "id": "AwAKq6V"
+    },
+    {
+      "idTask": "4TMpKDS",
+      "idNewcomer": "JBFANFQ",
+      "name": "jjghjjg",
+      "supervisor": "lmml,n",
+      "priority": 1,
+      "category": "discovery",
+      "id": "ADh5Daj"
+    },
+    {
+      "idTask": "3",
+      "idNewcomer": "JBFANFQ",
+      "name": "Renseigner compte IAM",
+      "supervisor": "Salarié",
+      "priority": 3,
+      "category": "administrative",
+      "id": "y4YanLA"
+    },
+    {
+      "idTask": "3",
+      "idNewcomer": "4",
+      "type": "obligatory",
+      "comment": "",
+      "datePlan": "2022-07-08",
+      "status": "planned",
+      "name": "Renseigner compte IAM",
+      "supervisor": "Salarié",
+      "priority": 3,
+      "category": "administrative",
+      "id": "XmA9PAu"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "administrative"
+    },
+    {
+      "id": "2",
+      "name": "discovery"
+    },
+    {
+      "id": "3",
+      "name": "others"
     }
   ]
 }

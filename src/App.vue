@@ -14,6 +14,9 @@
                 <router-link to="/tasks">Tasks</router-link>
             </li>
             <li>
+                <router-link to="/categories">Categories</router-link>
+            </li>
+            <li>
                 <router-link to="/login">Login</router-link>
             </li>
             <div id="log">
@@ -79,13 +82,14 @@
     .fas{
         font-size: 24px;
         cursor: pointer;
-        margin-left: auto;
+        
     }
     .fa-times{
         color:#f64545;
     }
     .fa-cogs{
         color:rgb(247, 154, 99);
+        margin-left: auto;
     }
 
     .parent {
@@ -98,9 +102,64 @@
         color:white;
         font-size: 20px;
     }
+    .header {
+        border: 2px solid #105e85;
+        display: flex;
+        padding: 5px;
+        margin: 3px;
+        align-items: center;
+        color:#105e85;
+        font-size: 20px;
+    }
+
+    .cat{
+        color:#0a3950;
+        text-align: center;
+    }
 
     i{
         margin: 0 10px;
+    }
+    form{
+        font-size: 28px;
+        border: 5px solid #041647;
+        color: #041647;
+        padding: 20px;
+        margin: 10px;
+        width:40%;
+        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.7);
+    }
+    form>div{
+        margin: 10px 5px;
+    }
+    
+    .firstN{
+        width: 10%;
+        min-width: 150px;
+    }
+
+    .secondN{
+        width: 10%;
+        min-width: 150px;
+    }
+
+    .thirdN{
+        width: 20%;
+        min-width: 300px;
+    }
+    .firstTN{
+        width: 30%;
+        min-width: 250px;
+    }
+
+    .secondTN{
+        width: 12%;
+        min-width: 125px;
+    }
+
+    .thirdTN{
+        width: 2%;
+        min-width: 20px;
     }
 
 </style> 

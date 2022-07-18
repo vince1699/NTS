@@ -37,15 +37,20 @@
                 </select>
         </div>                 
         <input type="submit" value="Update Task" class="btn">
+        <Button type="button" @click="$emit('show-update')" :text="'Close'"  :color="'#9a0000'"/>     
     </form>
 </template>
 
 <script>
+    import Button from '../components/Button.vue';
 
     export default{
         name: 'UpdateNewcomer',
         props:{
             taskNew: Object,
+        },
+        components : {
+            Button,
         },
         data(){
             return{                
@@ -94,24 +99,14 @@
                 this.comment = ''
                 this.datePlan = ''
                 this.status = 'program'
-            }
+            },
+            emits:['show-update']
         },
     }
 </script>
 
 <style scoped>
-    form{
-        font-size: 28px;
-        border: 5px solid #041647;
-        padding: 20px;
-        margin: 10px;
-        width:40%;
-        box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.7);
-    }
 
-    div{
-        margin: 10px 5px;
-    }
 
     input:not([type="radio"]),select,textarea{
         background-color: white;

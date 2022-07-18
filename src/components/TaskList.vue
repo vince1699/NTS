@@ -1,14 +1,14 @@
 <template>
     <div id="tab"> 
-        <h1 style="color:black"> Administrative </h1>
+        <h1 class="cat"> Administrative </h1>
         <div :key="task.id" v-for="task in tasks">
-            <div class="parent"  v-if="task.category=='administrative'">
+            <div v-if="task.category=='administrative'">
                 <Task @delete-task="$emit('delete-task',task.id)" :task="task"/>
             </div>
         </div>
-        <h1 style="color:black"> Discovery </h1>
+        <h1 class="cat"> Discovery </h1>
         <div :key="task.id" v-for="task in tasks">
-            <div class="parent" v-if="task.category=='discovery'">
+            <div v-if="task.category=='discovery'">
                 <Task @delete-task="$emit('delete-task',task.id)" :task="task"/>
             </div>
         </div>
